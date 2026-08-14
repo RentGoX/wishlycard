@@ -106,19 +106,19 @@ const RELATIONSHIPS = [
 
 const OCCASIONS = [
   {id:'birthday', label:'Birthday', emoji:'🎂', title:'Happy Birthday', scene:'birthday'},
-  {id:'anniversary', label:'Anniversary', emoji:'💍', title:'Happy Anniversary', scene:'romantic'},
-  {id:'wedding', label:'Wedding', emoji:'💒', title:'Congratulations', scene:'romantic'},
-  {id:'congratulations', label:'Congratulations', emoji:'🏆', title:'Congratulations', scene:'achievement'},
-  {id:'graduation', label:'Graduation', emoji:'🎓', title:'Congrats, Grad', scene:'achievement'},
-  {id:'love', label:'Love', emoji:'❤️', title:'With Love', scene:'romantic'},
-  {id:'bestwishes', label:'Best Wishes', emoji:'🌟', title:'Best Wishes', scene:'soft'},
-  {id:'thankyou', label:'Thank You', emoji:'🙏', title:'Thank You', scene:'soft'},
-  {id:'getwell', label:'Get Well Soon', emoji:'🌷', title:'Get Well Soon', scene:'soft'},
-  {id:'goodluck', label:'Good Luck', emoji:'🍀', title:'Good Luck', scene:'achievement'},
-  {id:'newbeginning', label:'New Beginning', emoji:'🌅', title:'New Beginnings', scene:'soft'},
-  {id:'friendship', label:'Friendship', emoji:'🤝', title:'To Friendship', scene:'friend'},
-  {id:'festival', label:'Festival', emoji:'🎊', title:'Happy Celebrations', scene:'friend'},
-  {id:'other', label:'Other', emoji:'✨', title:'A Special Wish', scene:'soft'},
+  {id:'anniversary', label:'Anniversary', emoji:'💍', title:'Happy Anniversary', scene:'anniversary'},
+  {id:'wedding', label:'Wedding', emoji:'💒', title:'Congratulations', scene:'wedding'},
+  {id:'congratulations', label:'Congratulations', emoji:'🏆', title:'Congratulations', scene:'congratulations'},
+  {id:'graduation', label:'Graduation', emoji:'🎓', title:'Congrats, Grad', scene:'graduation'},
+  {id:'love', label:'Love', emoji:'❤️', title:'With Love', scene:'love'},
+  {id:'bestwishes', label:'Best Wishes', emoji:'🌟', title:'Best Wishes', scene:'bestwishes'},
+  {id:'thankyou', label:'Thank You', emoji:'🙏', title:'Thank You', scene:'thankyou'},
+  {id:'getwell', label:'Get Well Soon', emoji:'🌷', title:'Get Well Soon', scene:'getwell'},
+  {id:'goodluck', label:'Good Luck', emoji:'🍀', title:'Good Luck', scene:'goodluck'},
+  {id:'newbeginning', label:'New Beginning', emoji:'🌅', title:'New Beginnings', scene:'newbeginning'},
+  {id:'friendship', label:'Friendship', emoji:'🤝', title:'To Friendship', scene:'friendship'},
+  {id:'festival', label:'Festival', emoji:'🎊', title:'Happy Celebrations', scene:'festival'},
+  {id:'other', label:'Other', emoji:'✨', title:'A Special Wish', scene:'other'},
 ];
 
 const VIBES = [
@@ -773,26 +773,75 @@ function buildScenePlan(sceneType, vibe){
       {emoji:'🎈', kicker:'Balloons rising\u2026', duration:1200, burst:true, burstCount:70},
       {emoji:'🎂', kicker:'Make a wish\u2026', duration:1400, burst:true, burstCount:90},
     ],
-    romantic: [
-      {emoji:'🌹', kicker:'', duration:1300, burst:true, burstCount:40},
-      {emoji:'💍', kicker:'A moment, just for you\u2026', duration:1300, burst:true, burstCount:60},
-      {emoji:'💕', kicker:'', duration:1300, burst:true, burstCount:80},
+    anniversary: [
+      {emoji:'🕯️', kicker:'', duration:1200},
+      {emoji:'💍', kicker:'Through the years\u2026', duration:1300, burst:true, burstCount:45},
+      {emoji:'🥂', kicker:'Here\u2019s to us\u2026', duration:1200, burst:true, burstCount:55},
+      {emoji:'💞', kicker:'', duration:1300, burst:true, burstCount:75},
     ],
-    achievement: [
-      {emoji:'🎓', kicker:'', duration:1200, burst:true, burstCount:30},
-      {emoji:'🏆', kicker:'Every bit of effort, recognized\u2026', duration:1300, burst:true, burstCount:70},
-      {emoji:'🌟', kicker:'', duration:1200, burst:true, burstCount:80},
+    wedding: [
+      {emoji:'💐', kicker:'', duration:1200},
+      {emoji:'💒', kicker:'A promise, sealed\u2026', duration:1300, burst:true, burstCount:50},
+      {emoji:'💍', kicker:'', duration:1200, burst:true, burstCount:60},
+      {emoji:'🎊', kicker:'Celebrate the union\u2026', duration:1300, burst:true, burstCount:90},
     ],
-    friend: [
-      {emoji:'🎈', kicker:'', duration:1100, burst:true, burstCount:50},
+    congratulations: [
+      {emoji:'🏆', kicker:'', duration:1200},
+      {emoji:'🎉', kicker:'Every bit of effort, recognized\u2026', duration:1300, burst:true, burstCount:70},
+      {emoji:'🌟', kicker:'', duration:1300, burst:true, burstCount:80},
+    ],
+    graduation: [
+      {emoji:'📜', kicker:'', duration:1100},
+      {emoji:'🎓', kicker:'The cap goes up\u2026', duration:1300, burst:true, burstCount:60},
+      {emoji:'🏅', kicker:'', duration:1200, burst:true, burstCount:50},
+      {emoji:'🎉', kicker:'A new chapter begins\u2026', duration:1300, burst:true, burstCount:85},
+    ],
+    love: [
+      {emoji:'🌹', kicker:'', duration:1300, burst:true, burstCount:35},
+      {emoji:'💌', kicker:'A little reminder\u2026', duration:1200, burst:true, burstCount:45},
+      {emoji:'❤️', kicker:'', duration:1300, burst:true, burstCount:75},
+    ],
+    bestwishes: [
+      {emoji:'🌟', kicker:'', duration:1300, burst:true, burstCount:30},
+      {emoji:'🕊️', kicker:'Sending it your way\u2026', duration:1300, burst:true, burstCount:40},
+      {emoji:'✨', kicker:'', duration:1300, burst:true, burstCount:55},
+    ],
+    thankyou: [
+      {emoji:'🙏', kicker:'', duration:1400},
+      {emoji:'🌼', kicker:'From the heart\u2026', duration:1300, burst:true, burstCount:30},
+      {emoji:'💛', kicker:'', duration:1300, burst:true, burstCount:40},
+    ],
+    getwell: [
+      {emoji:'🌷', kicker:'', duration:1500, burst:true, burstCount:18},
+      {emoji:'☀️', kicker:'Gentle wishes, headed your way\u2026', duration:1400, burst:true, burstCount:22},
+      {emoji:'🤍', kicker:'', duration:1300, burst:true, burstCount:26},
+    ],
+    goodluck: [
+      {emoji:'🍀', kicker:'', duration:1200, burst:true, burstCount:30},
+      {emoji:'🤞', kicker:'You\u2019ve got this\u2026', duration:1200, burst:true, burstCount:45},
+      {emoji:'🌟', kicker:'', duration:1300, burst:true, burstCount:70},
+    ],
+    newbeginning: [
+      {emoji:'🌅', kicker:'', duration:1400},
+      {emoji:'🧭', kicker:'A fresh road ahead\u2026', duration:1300, burst:true, burstCount:30},
+      {emoji:'🌤️', kicker:'', duration:1300, burst:true, burstCount:40},
+    ],
+    friendship: [
+      {emoji:'🤝', kicker:'', duration:1200, burst:true, burstCount:35},
+      {emoji:'🎈', kicker:'Here\u2019s to us\u2026', duration:1200, burst:true, burstCount:55},
       {emoji:'🎊', kicker:'Let\u2019s celebrate\u2026', duration:1300, burst:true, burstCount:90},
     ],
-    soft: [
-      {emoji:'🌷', kicker:'', duration:1400, burst:true, burstCount:24},
-      {emoji:'🌤️', kicker:'', duration:1300, burst:true, burstCount:30},
+    festival: [
+      {emoji:'🪔', kicker:'', duration:1200},
+      {emoji:'🎆', kicker:'Let the celebrations begin\u2026', duration:1300, burst:true, burstCount:60},
+      {emoji:'🎊', kicker:'', duration:1300, burst:true, burstCount:90},
+    ],
+    other: [
+      {emoji:'✨', kicker:'', duration:1300, burst:true, burstCount:30},
+      {emoji:'🎁', kicker:'', duration:1300, burst:true, burstCount:50},
     ],
   };
-  return (plans[sceneType] || plans.soft).map(s=>s);
+  return (plans[sceneType] || plans.other).map(s=>s);
 }
 
 /* ===================== FINAL CARD ===================== */
