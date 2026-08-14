@@ -323,6 +323,7 @@ function render(){
   const route = currentRoute();
   $app.innerHTML = '';
   setVibeTheme(null); // reset to default theme outside wish stage
+  if(typeof clearParticles === 'function') clearParticles();
   if(route.name === 'home') renderHome();
   else if(route.name === 'create') renderCreate();
   else if(route.name === 'wish') renderWishEntry(route.params);
@@ -860,7 +861,7 @@ function renderFinalCard(senderName, data, occ, vibe, message, params){
   fc.appendChild(el('div',{class:'fc-brand'}, 'Wishly ✨'));
   wrap.appendChild(fc);
 
-  burstParticles(vibe.particle, 70);
+  clearParticles(); // final card should look clean and static, not covered by falling confetti
 
   const shareTitle = el('h3',{style:'margin:26px 0 12px;font-size:17px;'}, 'Share this wish');
   wrap.appendChild(shareTitle);
@@ -1035,6 +1036,11 @@ function burstParticles(type, count){
     });
   }
   if(particles.length > 400) particles.splice(0, particles.length-400);
+}
+
+function clearParticles(){
+  particles = [];
+  if(pCtx) pCtx.clearRect(0,0,pCanvas.width,pCanvas.height);
 }
 
 function loop(){
