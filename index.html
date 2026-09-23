@@ -2,58 +2,925 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Wishly ✨ — Create a Personalized Surprise Wish & Share It</title>
-<meta name="description" content="Wishly lets you create a beautiful, personalized digital wish card and send it as a surprise to friends and family — birthdays, anniversaries, graduations, and more. No sign-up required.">
-<meta name="keywords" content="wishly, digital wish card, online greeting card, birthday wish maker, personalized wish, surprise link, e-card, anniversary card, graduation card">
-<meta name="robots" content="index, follow">
-<meta name="author" content="Wishly">
-<link rel="canonical" href="https://rentgox.github.io/wishlycard/">
-
-<!-- Open Graph / Facebook / WhatsApp preview -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://rentgox.github.io/wishlycard/">
-<meta property="og:title" content="Wishly ✨ — Create a Personalized Surprise Wish">
-<meta property="og:description" content="Create a beautiful, personalized wish and send it as a surprise. No sign-up, no database — just a link they'll love opening.">
-<meta property="og:image" content="https://rentgox.github.io/wishlycard/og-image.png">
-
-<!-- Twitter card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Wishly ✨ — Create a Personalized Surprise Wish">
-<meta name="twitter:description" content="Create a beautiful, personalized wish and send it as a surprise.">
-<meta name="twitter:image" content="https://rentgox.github.io/wishlycard/og-image.png">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RaktSaathi — Find blood in minutes, not hours</title>
+<meta name="description" content="RaktSaathi connects people who need blood urgently with verified, nearby donors across India — real-time matching, privacy-first location, and hospital-verified donors.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-950: #0a1826;
+    --navy-900: #0b1d33;
+    --navy-800: #13294b;
+    --navy-700: #1e3a5f;
+    --navy-600: #2c4f7c;
+    --red-700: #b71c1c;
+    --red-600: #d32f2f;
+    --red-500: #e5534b;
+    --cream: #faf8f5;
+    --cream-100: #f2efe9;
+    --ink: #10212f;
+    --ink-soft: #4a5b68;
+    --line: #e4ded4;
+    --success: #2e7d32;
+    --amber: #c97a1a;
+    --radius-sm: 6px;
+    --radius-md: 14px;
+    --radius-lg: 26px;
+    --maxw: 1180px;
+  }
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Wishly",
-  "url": "https://rentgox.github.io/wishlycard/",
-  "description": "Create a beautiful, personalized digital wish card and send it as a surprise.",
-  "applicationCategory": "LifestyleApplication",
-  "operatingSystem": "Any",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-}
-</script>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .display {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--navy-950);
+  }
+
+  p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  img, svg { display: block; max-width: 100%; }
+
+  .wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Nav ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(250, 248, 245, 0.88);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 74px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.28rem;
+    color: var(--navy-950);
+  }
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: var(--red-600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .brand-bn {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    font-family: 'Inter', sans-serif;
+    display: block;
+    margin-top: -2px;
+  }
+  .brand-stack { display: flex; flex-direction: column; }
+
+  nav.links {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+  }
+  nav.links a {
+    font-size: 0.94rem;
+    font-weight: 500;
+    color: var(--navy-800);
+  }
+  nav.links a:hover { color: var(--red-600); }
+
+  .nav-actions { display: flex; align-items: center; gap: 14px; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 22px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .btn-primary { background: var(--red-600); color: #fff; }
+  .btn-primary:hover { background: var(--red-700); }
+  .btn-ghost { border-color: var(--navy-800); color: var(--navy-900); }
+  .btn-ghost:hover { background: var(--navy-900); color: #fff; }
+  .btn-outline-light { border-color: rgba(255,255,255,0.35); color: #fff; }
+  .btn-outline-light:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+
+  .menu-toggle { display: none; background: none; border: none; cursor: pointer; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background: var(--navy-950);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    padding: 88px 0 110px;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -180px;
+    right: -160px;
+    width: 620px;
+    height: 620px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(211,47,47,0.30) 0%, rgba(211,47,47,0) 70%);
+  }
+  .hero-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .eyebrow-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.16);
+    font-size: 0.82rem;
+    color: #f2d9d9;
+    margin-bottom: 26px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease-out 0.05s forwards;
+  }
+  .eyebrow-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--red-500);
+  }
+  .hero h1 {
+    font-size: clamp(2.5rem, 4.4vw, 3.65rem);
+    color: #fff;
+    opacity: 0;
+    animation: fadeUp 0.7s ease-out 0.15s forwards;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: #f4b8b4;
+  }
+  .hero-sub {
+    margin-top: 22px;
+    font-size: 1.14rem;
+    color: #c6d0da;
+    max-width: 52ch;
+    opacity: 0;
+    animation: fadeUp 0.7s ease-out 0.28s forwards;
+  }
+  .hero-actions {
+    margin-top: 36px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.7s ease-out 0.4s forwards;
+  }
+  .hero-note {
+    margin-top: 26px;
+    font-size: 0.86rem;
+    color: #8fa0ae;
+    opacity: 0;
+    animation: fadeUp 0.7s ease-out 0.5s forwards;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-card {
+    background: linear-gradient(160deg, var(--navy-800), var(--navy-700));
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius-lg);
+    padding: 30px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease-out 0.35s forwards;
+  }
+  .hero-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+  }
+  .pulse-badge {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(211,47,47,0.18);
+    border: 1px solid rgba(229,83,75,0.45);
+    color: #f7c9c6;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+  .pulse-dot {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--red-500);
+    box-shadow: 0 0 0 0 rgba(229,83,75,0.6);
+    animation: pulse 1.8s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(229,83,75,0.55); }
+    70% { box-shadow: 0 0 0 9px rgba(229,83,75,0); }
+    100% { box-shadow: 0 0 0 0 rgba(229,83,75,0); }
+  }
+  .req-block {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: var(--radius-md);
+    padding: 18px;
+    margin-bottom: 14px;
+  }
+  .req-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .group-chip {
+    width: 40px; height: 40px; border-radius: 9px;
+    background: var(--red-600); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.85rem;
+  }
+  .req-meta { font-size: 0.8rem; color: #a9b8c3; }
+  .req-title { font-size: 0.98rem; font-weight: 600; color: #fff; margin-top: 2px;}
+  .donor-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 0; border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .donor-row:first-of-type { border-top: none; }
+  .donor-name { font-size: 0.87rem; color: #e4ebef; font-weight: 500; }
+  .donor-dist { font-size: 0.78rem; color: #8fa0ae; }
+  .accept-tag {
+    font-size: 0.72rem; font-weight: 700; color: #8bd39a;
+    background: rgba(46,125,50,0.18);
+    padding: 3px 9px; border-radius: 999px;
+  }
+
+  /* ---------- Section shell ---------- */
+  section { padding: 96px 0; }
+  .section-head { max-width: 640px; margin-bottom: 52px; }
+  .kicker {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--red-600);
+    margin-bottom: 12px;
+  }
+  .section-head h2 { font-size: clamp(1.9rem, 3vw, 2.5rem); }
+  .section-head p {
+    margin-top: 16px;
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Problem ---------- */
+  .problem { background: var(--cream); }
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .problem-copy p {
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+  }
+  .problem-copy p + p { margin-top: 18px; }
+  .fact-list { margin-top: 28px; display: flex; flex-direction: column; gap: 18px; }
+  .fact {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding-left: 0;
+  }
+  .fact-icon {
+    width: 34px; height: 34px; border-radius: 8px;
+    background: #fdecec; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .fact-text { font-size: 0.96rem; color: var(--ink); }
+
+  /* ---------- How it works — timeline ---------- */
+  .how { background: var(--navy-950); color: #fff; }
+  .how .kicker { color: #f4b8b4; }
+  .how .section-head h2 { color: #fff; }
+  .how .section-head p { color: #b7c3cd; }
+
+  .timeline { display: flex; flex-direction: column; }
+  .step {
+    display: grid;
+    grid-template-columns: 68px 1fr;
+    gap: 26px;
+    position: relative;
+    padding-bottom: 44px;
+  }
+  .step:last-child { padding-bottom: 0; }
+  .step-num-col {
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .step-num {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--navy-800);
+    border: 1.5px solid rgba(255,255,255,0.18);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    color: #f4b8b4;
+    flex-shrink: 0;
+  }
+  .step-line {
+    width: 1.5px; flex: 1;
+    background: rgba(255,255,255,0.14);
+    margin-top: 8px;
+  }
+  .step:last-child .step-line { display: none; }
+  .step-body { padding-top: 6px; }
+  .step-body h3 { color: #fff; font-size: 1.28rem; margin-bottom: 8px; }
+  .step-body p { color: #b7c3cd; font-size: 0.99rem; max-width: 56ch; }
+
+  /* ---------- Features — bento ---------- */
+  .features { background: var(--cream); }
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 18px;
+  }
+  .b-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 28px;
+  }
+  .b-large { grid-column: span 3; }
+  .b-small { grid-column: span 2; }
+  .b-icon {
+    width: 42px; height: 42px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+  }
+  .b-card h3 { font-size: 1.14rem; margin-bottom: 8px; }
+  .b-card p { font-size: 0.92rem; color: var(--ink-soft); }
+  .ic-red { background: #fdecec; }
+  .ic-navy { background: #e9edf3; }
+  .ic-green { background: #e7f1e8; }
+  .ic-amber { background: #f7ecdc; }
+
+  /* ---------- Trust / Security ---------- */
+  .trust { background: var(--navy-900); color: #fff; }
+  .trust-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .trust h2 { color: #fff; font-size: clamp(1.9rem, 3vw, 2.4rem); }
+  .trust .kicker { color: #f4b8b4; }
+  .trust-copy p { color: #b7c3cd; font-size: 1.03rem; margin-top: 16px; }
+  .trust-list { display: flex; flex-direction: column; gap: 0; }
+  .trust-item {
+    display: flex; gap: 16px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .trust-item:first-child { border-top: none; padding-top: 0; }
+  .trust-check {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: rgba(46,125,50,0.22);
+    border: 1px solid rgba(139,211,154,0.5);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .trust-item h4 { color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 5px; }
+  .trust-item p { color: #a9b8c3; font-size: 0.9rem; }
+  .disclaimer-box {
+    margin-top: 28px;
+    background: rgba(211,47,47,0.1);
+    border: 1px solid rgba(229,83,75,0.35);
+    border-radius: var(--radius-sm);
+    padding: 16px 18px;
+    font-size: 0.87rem;
+    color: #f2d9d9;
+  }
+
+  /* ---------- For hospitals ---------- */
+  .partner {
+    background: var(--cream-100);
+  }
+  .partner-inner {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 56px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 50px;
+    align-items: center;
+  }
+  .partner-copy h2 { font-size: clamp(1.7rem, 2.6vw, 2.2rem); }
+  .partner-copy p { margin-top: 16px; font-size: 1.02rem; color: var(--ink-soft); }
+  .partner-points { margin-top: 22px; display: flex; flex-direction: column; gap: 12px; }
+  .partner-point { display: flex; gap: 10px; align-items: flex-start; font-size: 0.94rem; color: var(--ink); }
+  .partner-card {
+    background: var(--navy-950);
+    border-radius: var(--radius-md);
+    padding: 30px;
+    color: #fff;
+  }
+  .partner-card h4 { font-family: 'Fraunces', serif; font-size: 1.2rem; color: #fff; margin-bottom: 10px; }
+  .partner-card p { font-size: 0.9rem; color: #b7c3cd; margin-bottom: 20px; }
+
+  /* ---------- Tech stack ---------- */
+  .stack { background: var(--cream); text-align: left; }
+  .stack-badges {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    margin-top: 8px;
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 16px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--navy-900);
+  }
+  .badge-dot { width: 7px; height: 7px; border-radius: 50%; }
+
+  /* ---------- CTA ---------- */
+  .cta {
+    background: linear-gradient(135deg, var(--navy-950), var(--navy-800) 60%, var(--red-700));
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+  }
+  .cta h2 { color: #fff; font-size: clamp(2rem, 3.6vw, 2.8rem); max-width: 20ch; margin: 0 auto; }
+  .cta p { color: #c6d0da; margin-top: 18px; font-size: 1.06rem; max-width: 50ch; margin-left: auto; margin-right: auto; }
+  .cta-actions { margin-top: 34px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  /* ---------- Footer ---------- */
+  footer { background: var(--navy-950); color: #92a3af; padding: 56px 0 30px; }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.09);
+  }
+  .foot-brand p { margin-top: 14px; font-size: 0.9rem; color: #7f92a0; max-width: 32ch; }
+  .foot-col h5 { color: #fff; font-size: 0.88rem; font-weight: 600; margin-bottom: 14px; }
+  .foot-col a { display: block; font-size: 0.89rem; color: #92a3af; margin-bottom: 10px; }
+  .foot-col a:hover { color: #fff; }
+  .foot-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 26px; font-size: 0.82rem; flex-wrap: wrap; gap: 12px;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px) {
+    nav.links, .nav-actions .btn-ghost { display: none; }
+    .menu-toggle { display: block; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-card { order: -1; }
+    .problem-grid { grid-template-columns: 1fr; gap: 36px; }
+    .trust-grid { grid-template-columns: 1fr; }
+    .partner-inner { grid-template-columns: 1fr; padding: 34px; }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .wrap { padding: 0 20px; }
+    section { padding: 64px 0; }
+    .hero { padding: 56px 0 70px; }
+    .b-large, .b-small { grid-column: span 6; }
+    .foot-grid { grid-template-columns: 1fr; gap: 28px; }
+    .partner-inner { padding: 26px; }
+  }
+</style>
 </head>
 <body>
-<noscript>
-  <div style="max-width:560px;margin:60px auto;padding:0 24px;font-family:sans-serif;color:#f4eefc;background:#120c1e;">
-    <h1>Wishly — Create a Personalized Surprise Wish</h1>
-    <p>Wishly lets you create a beautiful, personalized digital wish card and send it as a surprise to friends and family for birthdays, anniversaries, graduations, and more.</p>
-    <p>Please enable JavaScript in your browser to use Wishly.</p>
-  </div>
-</noscript>
-<canvas id="bg-canvas" aria-hidden="true"></canvas>
-<canvas id="particle-canvas" aria-hidden="true"></canvas>
-<div id="app" class="app" role="main"></div>
-<div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-<script src="js/app.js"></script>
+<header>
+  <div class="wrap nav-row">
+    <a href="#" class="brand">
+      <span class="brand-mark">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2C12 2 5 11 5 15.5C5 19.09 8.13 22 12 22C15.87 22 19 19.09 19 15.5C19 11 12 2 12 2Z" fill="#fff"/></svg>
+      </span>
+      <span class="brand-stack">
+        RaktSaathi
+        <span class="brand-bn">রক্তসাথী</span>
+      </span>
+    </a>
+    <nav class="links">
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#trust">Privacy &amp; safety</a>
+      <a href="#hospitals">For hospitals</a>
+      <a href="#stack">Open source</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#" class="btn btn-ghost">View on GitHub</a>
+      <a href="#cta" class="btn btn-primary">Get started</a>
+    </div>
+    <button class="menu-toggle" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="#0b1d33" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow-tag">
+        <span class="eyebrow-dot"></span>
+        Built for India · Open source
+      </span>
+      <h1>Find blood in minutes, <em>not hours.</em></h1>
+      <p class="hero-sub">
+        RaktSaathi connects people who urgently need blood with verified,
+        nearby donors — the moment a request goes out, the right donors
+        are notified automatically, wherever they are in India.
+      </p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn btn-primary">Request blood or become a donor</a>
+        <a href="#how" class="btn btn-outline-light">See how matching works</a>
+      </div>
+      <p class="hero-note">
+        A community tool, not a marketplace — no blood is ever bought or sold here.
+      </p>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-top">
+        <span class="pulse-badge"><span class="pulse-dot"></span> Live request</span>
+        <span class="req-meta">2 min ago</span>
+      </div>
+      <div class="req-block">
+        <div class="req-top">
+          <div class="group-chip">B+</div>
+          <span class="req-meta">2 units · Critical</span>
+        </div>
+        <div class="req-title">City General Hospital, Agartala</div>
+      </div>
+      <div class="donor-row">
+        <div>
+          <div class="donor-name">Donor near Amtali</div>
+          <div class="donor-dist">1.8 km away</div>
+        </div>
+        <span class="accept-tag">Accepted</span>
+      </div>
+      <div class="donor-row">
+        <div>
+          <div class="donor-name">Donor near Ranirbazar</div>
+          <div class="donor-dist">3.4 km away</div>
+        </div>
+        <span class="req-meta">Notified</span>
+      </div>
+      <div class="donor-row">
+        <div>
+          <div class="donor-name">Donor near Krishnanagar</div>
+          <div class="donor-dist">4.1 km away</div>
+        </div>
+        <span class="req-meta">Notified</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="wrap problem-grid">
+    <div class="section-head" style="margin-bottom:0;">
+      <p class="kicker">The problem</p>
+      <h2>Eligible donors are often minutes away — but no one knows to ask them.</h2>
+    </div>
+    <div class="problem-copy">
+      <p>
+        Blood banks across India regularly run short of specific groups,
+        especially during emergencies, festivals, and in smaller towns
+        where donor networks are informal or word-of-mouth. Families
+        end up calling relatives, posting on social media, and hoping
+        someone with the right blood group sees it in time.
+      </p>
+      <p>
+        Meanwhile, willing donors exist nearby — they just aren't
+        reachable at the right moment. RaktSaathi closes that gap with
+        automatic, location-aware matching the instant a request is made.
+      </p>
+      <div class="fact-list">
+        <div class="fact">
+          <div class="fact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 8v5m0 4h.01M10.29 3.86l-8.5 14.7A1.5 1.5 0 003.14 21h17.72a1.5 1.5 0 001.35-2.44l-8.5-14.7a1.5 1.5 0 00-2.6 0z" stroke="#d32f2f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="fact-text">Rare groups (O−, AB−) are the hardest to find on short notice.</div>
+        </div>
+        <div class="fact">
+          <div class="fact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 6v6l4 2" stroke="#d32f2f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="#d32f2f" stroke-width="1.7"/></svg>
+          </div>
+          <div class="fact-text">In a critical case, every extra hour of searching adds real risk.</div>
+        </div>
+        <div class="fact">
+          <div class="fact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m5-9.13a4 4 0 110 8 4 4 0 010-8z" stroke="#d32f2f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="fact-text">Donors want to help, but rarely know exactly when they're needed.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">How it works</p>
+      <h2>Five steps, mostly automatic</h2>
+      <p>From the moment a request is created to a conversation with a donor — the matching itself needs no manual work.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="step">
+        <div class="step-num-col">
+          <div class="step-num">01</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-body">
+          <h3>Request is created</h3>
+          <p>Patient's name, blood group, units needed, hospital, and urgency level — hospital location and contact details are filled in automatically from GPS and the requester's profile.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num-col">
+          <div class="step-num">02</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-body">
+          <h3>Compatible donors are found</h3>
+          <p>The system checks blood-group compatibility and searches outward in radius tiers — starting close by and expanding automatically until enough eligible donors are found.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num-col">
+          <div class="step-num">03</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-body">
+          <h3>Donors are notified instantly</h3>
+          <p>A push notification goes out with the blood group, distance, and hospital — nothing more. No donor's exact address is ever shown to anyone.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num-col">
+          <div class="step-num">04</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-body">
+          <h3>A donor accepts</h3>
+          <p>The first donors to respond are confirmed — once enough donors have accepted for the units needed, the request closes automatically so no one is over-notified.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num-col">
+          <div class="step-num">05</div>
+        </div>
+        <div class="step-body">
+          <h3>Requester and donor connect</h3>
+          <p>A private chat opens between the two so they can coordinate — final confirmation always happens at a licensed hospital or blood bank.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">What's inside</p>
+      <h2>Everything an emergency donor network needs</h2>
+      <p>Built as a complete, production-grade system — not a prototype.</p>
+    </div>
+
+    <div class="bento">
+      <div class="b-card b-large">
+        <div class="b-icon ic-red">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 21s-8-4.5-8-11a5 5 0 019-3 5 5 0 019 3c0 6.5-8 11-8 11z" stroke="#d32f2f" stroke-width="1.7"/></svg>
+        </div>
+        <h3>Smart, privacy-first matching</h3>
+        <p>Distance is calculated server-side using real geographic indexing — donors see requests near them, but their exact home location is never exposed to anyone, ever.</p>
+      </div>
+      <div class="b-card b-large">
+        <div class="b-icon ic-navy">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#1e3a5f" stroke-width="1.7"/></svg>
+        </div>
+        <h3>Verified donors, honestly labelled</h3>
+        <p>Every donor starts as "self-declared." Admins review uploaded documents before a blood group is ever shown as verified — and the app never makes a medical decision on its own.</p>
+      </div>
+      <div class="b-card b-small">
+        <div class="b-icon ic-amber">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="#c97a1a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Three urgency levels</h3>
+        <p>Normal, urgent, and critical requests are prioritised so genuine emergencies stand out.</p>
+      </div>
+      <div class="b-card b-small">
+        <div class="b-icon ic-green">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 12h8M8 16h5M9 4h6a2 2 0 012 2v14l-5-3-5 3V6a2 2 0 012-2z" stroke="#2e7d32" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Donor dashboard</h3>
+        <p>Availability toggle, donation history, and incoming requests — all in one place for donors.</p>
+      </div>
+      <div class="b-card b-small">
+        <div class="b-icon ic-navy">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" stroke="#1e3a5f" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Built-in secure chat</h3>
+        <p>Once a donor accepts, a private thread opens automatically — no phone numbers exchanged upfront.</p>
+      </div>
+      <div class="b-card b-small">
+        <div class="b-icon ic-red">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="#d32f2f" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Full admin panel</h3>
+        <p>Verification review, fraud reports, hospital management, and audit logs — all governed by the same access rules as the app itself.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust" id="trust">
+  <div class="wrap trust-grid">
+    <div>
+      <p class="kicker">Privacy &amp; safety</p>
+      <h2>Designed so trust isn't optional</h2>
+      <div class="trust-copy">
+        <p>Every rule below is enforced at the database level — not just hidden in the interface. A modified app can't bypass them.</p>
+      </div>
+      <div class="disclaimer-box">
+        Blood availability is never guaranteed by the app. Final confirmation — blood grouping, screening, and cross-matching — always happens through a licensed blood bank or hospital.
+      </div>
+    </div>
+    <div class="trust-list">
+      <div class="trust-item">
+        <div class="trust-check">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#8bd39a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <h4>No exact location, ever</h4>
+          <p>Only a rounded distance is shown to anyone other than the donor themselves.</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-check">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#8bd39a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <h4>No blood marketplace</h4>
+          <p>No pricing, bidding, or blood-selling of any kind — this is a community matching tool only.</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-check">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#8bd39a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <h4>Documents stay private</h4>
+          <p>Verification uploads are stored in a private, access-controlled bucket — visible only to the donor and admins.</p>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-check">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#8bd39a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <h4>Abuse protection built in</h4>
+          <p>Rate limits on requests and acceptances, spam flagging, and a reporting system for fraudulent requests.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="partner" id="hospitals">
+  <div class="wrap">
+    <div class="partner-inner">
+      <div class="partner-copy">
+        <p class="kicker">For hospitals &amp; blood banks</p>
+        <h2>Become a verified partner</h2>
+        <p>RaktSaathi never replaces a licensed blood bank — it points people toward one, faster. Hospitals and blood banks can join as verified partners at no cost.</p>
+        <div class="partner-points">
+          <div class="partner-point">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;margin-top:2px;"><path d="M5 13l4 4L19 7" stroke="#2e7d32" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Listed as a verified location requesters can trust
+          </div>
+          <div class="partner-point">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;margin-top:2px;"><path d="M5 13l4 4L19 7" stroke="#2e7d32" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Final say on every donor's blood-group verification
+          </div>
+          <div class="partner-point">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;margin-top:2px;"><path d="M5 13l4 4L19 7" stroke="#2e7d32" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Access to a wider, digitally reachable donor pool
+          </div>
+        </div>
+      </div>
+      <div class="partner-card">
+        <h4>Talk to us</h4>
+        <p>We're onboarding hospitals and blood banks city by city — reach out and we'll walk you through it.</p>
+        <a href="mailto:partners@raktsaathi.example" class="btn btn-primary" style="width:100%;justify-content:center;">Request a partnership</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stack" id="stack">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Open source</p>
+      <h2>Built openly, on a modern stack</h2>
+      <p>The full source — app, database schema, and backend functions — is on GitHub for anyone to inspect, run, or contribute to.</p>
+    </div>
+    <div class="stack-badges">
+      <span class="badge"><span class="badge-dot" style="background:#0468D7;"></span>Flutter &amp; Dart</span>
+      <span class="badge"><span class="badge-dot" style="background:#3ECF8E;"></span>Supabase</span>
+      <span class="badge"><span class="badge-dot" style="background:#336791;"></span>PostgreSQL + PostGIS</span>
+      <span class="badge"><span class="badge-dot" style="background:#FFA000;"></span>Firebase Cloud Messaging</span>
+      <span class="badge"><span class="badge-dot" style="background:#4285F4;"></span>Google Maps &amp; Places</span>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="cta">
+  <div class="wrap">
+    <h2>Someone nearby could be the reason a family doesn't lose hope.</h2>
+    <p>Register as a donor in a few minutes, or raise a request when it matters most.</p>
+    <div class="cta-actions">
+      <a href="#" class="btn btn-primary">Get the app</a>
+      <a href="#" class="btn btn-outline-light">Star on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand" style="color:#fff;">
+          <span class="brand-mark">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C12 2 5 11 5 15.5C5 19.09 8.13 22 12 22C15.87 22 19 19.09 19 15.5C19 11 12 2 12 2Z" fill="#fff"/></svg>
+          </span>
+          RaktSaathi
+        </div>
+        <p>An open-source emergency blood donor matching network, built for India — not a substitute for licensed medical care.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Product</h5>
+        <a href="#how">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#trust">Privacy &amp; safety</a>
+      </div>
+      <div class="foot-col">
+        <h5>Community</h5>
+        <a href="#hospitals">For hospitals</a>
+        <a href="#stack">GitHub repository</a>
+        <a href="#">Report an issue</a>
+      </div>
+      <div class="foot-col">
+        <h5>Legal</h5>
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of use</a>
+        <a href="#">Medical disclaimer</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 RaktSaathi. All India, all blood groups.</span>
+      <span>In a medical emergency, always contact a licensed hospital or blood bank directly.</span>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
