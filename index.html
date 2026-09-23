@@ -139,7 +139,25 @@
   .btn-outline-light { border-color: rgba(255,255,255,0.35); color: #fff; }
   .btn-outline-light:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
 
-  .menu-toggle { display: none; background: none; border: none; cursor: pointer; }
+  .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+    padding: 8px 28px 20px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    padding: 13px 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--navy-900);
+    border-bottom: 1px solid var(--line);
+  }
+  .mobile-menu a:last-of-type { border-bottom: none; }
+  .mobile-menu .btn { margin-top: 14px; width: 100%; justify-content: center; }
 
   /* ---------- Hero ---------- */
   .hero {
@@ -547,11 +565,45 @@
       <a href="#" class="btn btn-ghost">View on GitHub</a>
       <a href="#cta" class="btn btn-primary">Get started</a>
     </div>
-    <button class="menu-toggle" aria-label="Menu">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="#0b1d33" stroke-width="2" stroke-linecap="round"/></svg>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" id="menuToggle">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" id="menuIconOpen"><path d="M3 6h18M3 12h18M3 18h18" stroke="#0b1d33" stroke-width="2" stroke-linecap="round"/></svg>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" id="menuIconClose" style="display:none;"><path d="M6 6l12 12M18 6L6 18" stroke="#0b1d33" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
   </div>
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#how">How it works</a>
+    <a href="#features">Features</a>
+    <a href="#trust">Privacy &amp; safety</a>
+    <a href="#hospitals">For hospitals</a>
+    <a href="#stack">Open source</a>
+    <a href="#" class="btn btn-ghost">View on GitHub</a>
+    <a href="#cta" class="btn btn-primary">Get started</a>
+  </nav>
 </header>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const iconOpen = document.getElementById('menuIconOpen');
+  const iconClose = document.getElementById('menuIconClose');
+
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+    iconOpen.style.display = isOpen ? 'none' : 'block';
+    iconClose.style.display = isOpen ? 'block' : 'none';
+  });
+
+  // Close the mobile menu after tapping any link inside it.
+  mobileMenu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      iconOpen.style.display = 'block';
+      iconClose.style.display = 'none';
+    });
+  });
+</script>
 
 <section class="hero">
   <div class="wrap hero-grid">
